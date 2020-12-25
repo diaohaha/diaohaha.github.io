@@ -271,11 +271,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/12/21/test/" rel="prev" title="成像原理">
-      <i class="fa fa-chevron-left"></i> 成像原理
-    </a></div>
       <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/21/test/" rel="next" title="成像原理">
+      成像原理 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -288,6 +288,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -443,6 +444,26 @@
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'f987ae085842312537f3',
+      clientSecret: '2ca44c12b21c2f3c2f2a1745548f896efc5ea87c',
+      repo        : 'blog-comments',
+      owner       : 'diaohaha',
+      admin       : ['diaohaha'],
+      id          : '5b362f01b003c6667e2e723551c9d7a7',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
