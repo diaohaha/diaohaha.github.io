@@ -174,7 +174,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/12/28/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">短视频管理概述</a>
+            <a href="/2020/12/28/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">短视频内容管理后台的方方面面</a>
         </h2>
 
         <div class="post-meta">
@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-29 10:53:14" itemprop="dateModified" datetime="2020-12-29T10:53:14+08:00">2020-12-29</time>
+                <time title="Modified: 2020-12-31 17:07:26" itemprop="dateModified" datetime="2020-12-31T17:07:26+08:00">2020-12-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,28 +214,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本文介绍一个内容管理平台涉及的基本概念及一些技术抽象。</p>
-<h1 id="短视频简介"><a href="#短视频简介" class="headerlink" title="短视频简介"></a>短视频简介</h1><hr>
-<p>短视频即短片视频，是一种互联网内容传播方式，一般是在互联网新媒体上传播的时长在5分钟以内的视频；随着移动终端普及和网络的提速，短平快的大流量传播内容逐渐获得各大平台、粉丝和资本的青睐。2012年的“快手”、2016年上线的“抖音”已经成为发展成为人们日常最主要得消遣软件，也成为各类媒体纷纷进驻和竞争得主要平台。</p>
-<p>一个短视频内容平台得主要过程包括：</p>
-<p>内容生产  -&gt;  内容管理  -&gt;  内容分发  -&gt;  内容展现</p>
+          <p>短视频作为移动互联网时代新兴的内容媒体，得到了媒体、资本和广大网民的青睐。一个短视频平台的整个内容体系大概包括下图几个部分:</p>
+<p><img src="https://diaohaha-file.oss-cn-hangzhou.aliyuncs.com/pic/video-structure.png"></p>
 <ul>
 <li>内容生产：主要分为PGC和UGC，UGC的内容生产涉及到拍摄器的美颜、滤镜、字幕、剪辑、特效、配音等。</li>
-<li>内容管理：视频上传到平台后即开始内容管理流程，包括存储、分析、审核、打标、转码过程。</li>
-<li>内容分发：为每个用户推荐视频。使用到内容管理中对内容的视频理解、打标数据。涉及到推荐模型和推荐策略等。</li>
+<li><font color=blue><strong>内容管理：视频上传到平台后即开始内容管理流程，包括存储、去重、分析、审核、打标、转码、水印等过程。</strong></font></li>
+<li>内容分发：为每个用户推荐视频，涉及到推荐模型和推荐策略、视频搜索。</li>
 <li>内容展现：播放器播放视频。使用到内容理解中生产的不同清晰度的视频。涉及到播放器兼容、优化、播放策略等。</li>
 </ul>
-<h1 id="存储与编码"><a href="#存储与编码" class="headerlink" title="存储与编码"></a>存储与编码</h1><hr>
-<p><em>bucket访问控制</em><br><em>防盗链</em> </p>
-<p><em>转码</em> </p>
+<hr>
+<p>本文介绍做一个短视频内容管理后台可能会遇到的一些问题和知识点。</p>
+<h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>先从存储说起，</p>
+<p><em>bucket访问控制</em><br><em>防盗链</em><br><em>转码</em> </p>
 <p>1.编码方式<br>2.分离编码方式</p>
-<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><hr>
-<p>短视频相较于图文信息，它有更长更复杂的生命周期。</p>
-<p>审核内容</p>
+<p>审核内容<br>状态管理</p>
 <p><em>成本控制</em></p>
-<h1 id="属性扩展"><a href="#属性扩展" class="headerlink" title="属性扩展"></a>属性扩展</h1><p>在整个视频的数据流中，每个流程的操作都可以认为是给短视频内容扩展一种属性。</p>
-<p><em>数据流调度</em></p>
-<p><em>补充历史任务</em></p>
+<p>扩展属性<br><em>数据流调度</em><br><em>补充历史任务</em></p>
 <hr>
 
       
