@@ -160,6 +160,116 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/01/04/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E4%B9%8B%E6%BC%94%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Diaohaha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoda's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/04/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E4%B9%8B%E6%BC%94%E5%8C%96/" class="post-title-link" itemprop="url">系统架构之演化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-01-04 14:48:28 / Modified: 21:47:46" itemprop="dateCreated datePublished" datetime="2021-01-04T14:48:28+08:00">2021-01-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>互联网的应用越来越丰富，互联网用户越来越多，后端的系统架构也经历了好几轮的演变。</p>
+<ul>
+<li>单体架构</li>
+<li>水平分层架构</li>
+<li>面向服务架构（垂直分层）</li>
+<li>微服务架构</li>
+<li>Services Mesh</li>
+</ul>
+<h1 id="单体架构"><a href="#单体架构" class="headerlink" title="单体架构"></a>单体架构</h1><p>单体架构出现在只用一台机器做服务器的时代，后端只有一个进程。</p>
+<p><font color=green><strong>优点</strong></font>:</p>
+<ul>
+<li>调试简单，部署快</li>
+</ul>
+<p><font color=red><strong>缺点</strong></font>:</p>
+<ul>
+<li>代码复杂，技术债务</li>
+<li>扩展能力有限</li>
+</ul>
+<h1 id="水平分层架构"><a href="#水平分层架构" class="headerlink" title="水平分层架构"></a>水平分层架构</h1><p><strong>分层是架构设计中最重要的一个原则</strong></p>
+<p>水平方向上将后端服务分为多个独立的进程:</p>
+<ul>
+<li>网关层</li>
+<li>业务逻辑层</li>
+<li>数据访问层</li>
+<li>数据存储层</li>
+</ul>
+<hr>
+<p><img src="https://diaohaha-file.oss-cn-hangzhou.aliyuncs.com/pic/%E6%B0%B4%E5%B9%B3%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84%E5%9B%BE.png"></p>
+<h4 id="网关层"><a href="#网关层" class="headerlink" title="网关层"></a>网关层</h4><ul>
+<li>请求校验，是否登录</li>
+<li>数据完整性检查，通用的入参检查，请求过滤</li>
+<li>协议转换http-&gt;tcp, Json-&gt;Pb，网络层次和数据层次进行优化</li>
+<li>路由转发，负载均衡，AB测试</li>
+<li>服务治理，限流，降级，熔断</li>
+<li>API监控，日志收集</li>
+</ul>
+<p>引入网关主要实现一些通用的功能，可以有效<font color=green>避免下游的每个服务重复实现</font>。但是增加网关之后也就多了一次转发，会造成<font color=red>性能下降</font>。</p>
+<p>同时，在整个网络调用过程中，一定会有一个单点，可能是网关、nginx、dns服务器等。使用网关作为单点，可以对整体服务进行统一控制，但是当网关的稳定性低时会导致系统全面奔溃，所以<strong>网关设计要尽量轻。</strong></p>
+<h4 id="数据访问层"><a href="#数据访问层" class="headerlink" title="数据访问层"></a>数据访问层</h4><p>数据访问层主要实现</p>
+<ul>
+<li>CRUD 业务增删改查</li>
+<li>ORM 对象模型映射</li>
+<li>Sharding 数据分库分表</li>
+<li>屏蔽底层存储差异</li>
+</ul>
+<h4 id="业务逻辑层"><a href="#业务逻辑层" class="headerlink" title="业务逻辑层"></a>业务逻辑层</h4><p>实现具体的业务逻辑。</p>
+<h1 id="面向服务SOA"><a href="#面向服务SOA" class="headerlink" title="面向服务SOA"></a>面向服务SOA</h1><p>SOA(Service-oriented architecture)从垂直方向基于业务将系统分解成多个<strong>独立</strong>的服务。服务之间使用企业总线ESB交互。</p>
+<p><img src="https://www.oreilly.com/library/view/hands-on-microservices-/9781789133608/assets/ab95727d-9b5b-4831-a2b5-e4c0b5a1d11e.png"></p>
+<p><strong>如何进行好垂直拆分，需要对业务有深刻的理解与思考</strong>。把握好业务的数据边界和拆分粒度至关重要。</p>
+<p>相比于水平分层架构是一种技术架构，SOA更偏向于是一个业务架构。</p>
+<h1 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h1><h1 id="服务网格架构"><a href="#服务网格架构" class="headerlink" title="服务网格架构"></a>服务网格架构</h1><hr>
+<p><strong>架构虽然经过了若干演进，但是架构设计背后的哲学却都一样</strong>。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2020/12/28/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -489,7 +599,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -529,7 +639,7 @@
 <div class="copyright">
   
   &copy; 2016 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
