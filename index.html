@@ -160,6 +160,309 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/01/28/Python-with.as%E8%AF%AD%E5%8F%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Diaohaha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoda's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/28/Python-with.as%E8%AF%AD%E5%8F%A5/" class="post-title-link" itemprop="url">as语句</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-01-28 17:38:13 / Modified: 17:40:54" itemprop="dateCreated datePublished" datetime="2021-01-28T17:38:13+08:00">2021-01-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="With语句是什么？"><a href="#With语句是什么？" class="headerlink" title="With语句是什么？"></a>With语句是什么？</h4><p>有一些任务，可能事先需要设置，事后做清理工作。对于这种场景，Python的with语句提供了一种非常方便的处理方式。一个很好的例子是文件处理，你需要获取一个文件句柄，从文件中读取数据，然后关闭文件句柄。但是切莫只局限于使用with去处理文件操作，其他类似的场景也可以使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;&#x2F;tmp&#x2F;foo.txt&quot;) as file:</span><br><span class="line">    data &#x3D; file.read()</span><br></pre></td></tr></table></figure>
+
+<h4 id="with如何工作？"><a href="#with如何工作？" class="headerlink" title="with如何工作？"></a>with如何工作？</h4><p>Python对with的处理还很聪明。基本思想是with所求值的对象必须有一个<strong>enter</strong>()方法，一个<strong>exit</strong>()方法。紧跟with后面的语句被求值后，返回对象的<strong>enter</strong>()方法被调用，这个方法的返回值将被赋值给as后面的变量。当with后面的代码块全部被执行完之后，将调用前面返回对象的<strong>exit</strong>()方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class ThriftClient(object):</span><br><span class="line">    &quot;&quot;&quot; client &quot;&quot;&quot;</span><br><span class="line">    def __init__(self, module, host, port, timeout&#x3D;2000):</span><br><span class="line">        tsocket &#x3D; TSocket.TSocket(host, port)</span><br><span class="line">        tsocket.setTimeout(timeout)</span><br><span class="line">        self.transport &#x3D; TTransport.TBufferedTransport(tsocket)</span><br><span class="line">        self.client &#x3D; module.Client(TBinaryProtocol.TBinaryProtocol(self.transport))</span><br><span class="line"></span><br><span class="line">    def __enter__(self):</span><br><span class="line">        self.transport.open()</span><br><span class="line">        return self.client</span><br><span class="line"></span><br><span class="line">    def __exit__(self, value_type, type, trace):</span><br><span class="line">        self.transport.close()</span><br></pre></td></tr></table></figure>
+<p>实际上，在with后面的代码块抛出任何异常时，<strong>exit</strong>()方法被执行。正如例子所示，异常抛出时，与之关联的type，value和stack trace传给<strong>exit</strong>()方法，因此抛出的ZeroDivisionError异常被打印出来了。开发库时，清理资源，关闭文件等等操作，都可以放在__exit__方法当中。<br>因此，Python的with语句是提供一个有效的机制，让代码更简练，同时在异常产生时，清理工作更简单。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/01/28/Python-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Diaohaha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoda's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/28/Python-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Python-字符编码问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-01-28 17:37:45 / Modified: 17:39:07" itemprop="dateCreated datePublished" datetime="2021-01-28T17:37:45+08:00">2021-01-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>字符编码问题很简单，当你可以区分以下几种概念之后：</p>
+<ol>
+<li>字节编码与字符编码</li>
+<li>字节串与字符串</li>
+<li>文件编码、IDE编码、其他I/O编码</li>
+<li><strong>str</strong>()与<strong>repr</strong>()</li>
+</ol>
+<hr>
+<h4 id="字节编码与字符编码"><a href="#字节编码与字符编码" class="headerlink" title="字节编码与字符编码"></a>字节编码与字符编码</h4><p>ascii unicode是字符编码，编码后的字符编成一个段落是字节编码，utf-8 gbk是字节编码。</p>
+<h4 id="字节串与字符串"><a href="#字节串与字符串" class="headerlink" title="字节串与字符串"></a>字节串与字符串</h4><ul>
+<li><p>str是字节串，由unicode经过编码(encode)后的字节组成的。使用len来求长度获取的是字节长度。</p>
+</li>
+<li><p>unicode才是严格意义上的字符串，如u’中文’。使用len来求长度时是字符个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; len(&quot;中文&quot;)</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt; len(u&quot;中文&quot;)</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>在程序中处理字符串之前，最好先确定是哪种类型。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(u<span class="string">&#x27;中文&#x27;</span>, unicode)</span></span><br><span class="line">True</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(u<span class="string">&#x27;中文&#x27;</span>, str)</span></span><br><span class="line">False</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(<span class="string">&#x27;中文&#x27;</span>, str)</span></span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>通常的处理过程是识别输入编码，然后解码成unicode，在最后输出之前在进行编码，分别使用python内建函数encode和decode，如果确定一个字符串不是unicode类型，这时候需要进行解码，可以使用chardet识别str的编码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from chardet import detect</span><br><span class="line">&gt;&gt;&gt; a &#x3D; &quot;中文&quot;</span><br><span class="line">&gt;&gt;&gt; detect(a)</span><br><span class="line">&#123;&#39;confidence&#39;: 0.682639754276994, &#39;encoding&#39;: &#39;KOI8-R&#39;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="文件编码、IDE编码、其他I-O编码"><a href="#文件编码、IDE编码、其他I-O编码" class="headerlink" title="文件编码、IDE编码、其他I/O编码"></a>文件编码、IDE编码、其他I/O编码</h4></li>
+<li><p>Python程序文件的编码 (默认编码ascii 只在文件中有编码时有影响)</p>
+</li>
+<li><p>Python程序运行时环境（IDE）的编码（影响输入和输出）</p>
+</li>
+<li><p>Python程序读取外部文件、网页的编码 （影响输入与输出）</p>
+</li>
+</ul>
+<p>当我们发现乱码时，就要区分是第二还是第三种情形，终端打印是IDE相关，数据库属于其他I/O相关，之所以出现乱码就是编码不匹配，我们需要确定的是不匹配的双方和双方所对应的编码。</p>
+<p>对于系统的编码可以使用sys来获取，这影响终端显示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import sys</span><br><span class="line">&gt;&gt;&gt; sys.getdefaultencoding()</span><br><span class="line">&#39;ascii&#39;</span><br></pre></td></tr></table></figure>
+<h4 id="str-与repr"><a href="#str-与repr" class="headerlink" title="str()与repr()"></a><strong>str</strong>()与<strong>repr</strong>()</h4><p>__repr__和__str__这两个方法都是用于显示的，__str__是面向用户的，而__repr__面向程序员。print首先尝试的是__str__函数，这就是我们unicode字符串打印出来和字节串一样的原因。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/01/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Python%E8%A3%85%E9%A5%B0%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Diaohaha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoda's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Python%E8%A3%85%E9%A5%B0%E5%99%A8/" class="post-title-link" itemprop="url">设计模式:Python装饰器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-01-28 17:35:16 / Modified: 17:38:21" itemprop="dateCreated datePublished" datetime="2021-01-28T17:35:16+08:00">2021-01-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>装饰器本质上是一个Python函数，它可以让其他函数在不需要做任何代码变动的前提下增加额外功能，装饰器的返回值也是一个函数对象。它经常用于有切面需求的场景，比如：插入日志、性能测试、事务处理、缓存、权限校验等场景。装饰器是解决这类问题的绝佳设计，有了装饰器，我们就可以抽离出大量与函数功能本身无关的雷同代码并继续重用。</p>
+<p>最简单的装饰器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def debug(func):</span><br><span class="line">    def wrapper():</span><br><span class="line">        print &quot;[DEBUG]: enter &#123;&#125;()&quot;.format(func.__name__)</span><br><span class="line">        return func()</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@debug</span><br><span class="line">def say_hello():</span><br><span class="line">    print &quot;hello!&quot;</span><br></pre></td></tr></table></figure>
+
+<p>当函数需要接收参数时，装饰器这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def debug(func):</span><br><span class="line">    def wrapper(*args, **kwargs):  # 指定宇宙无敌参数</span><br><span class="line">        print &quot;[DEBUG]: enter &#123;&#125;()&quot;.format(func.__name__)</span><br><span class="line">        print &#39;Prepare and say...&#39;,</span><br><span class="line">        return func(*args, **kwargs)</span><br><span class="line">    return wrapper  # 返回</span><br><span class="line"></span><br><span class="line">@debug</span><br><span class="line">def say(something):</span><br><span class="line">    print &quot;hello &#123;&#125;!&quot;.format(something)</span><br></pre></td></tr></table></figure>
+<p>如果想让装饰器可以定制化，那么装饰器也需要接收参数，比如log装饰器，我们想要传参数来说明日志的等级这个时候需要多一层：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">def logging(level):</span><br><span class="line">    def wrapper(func):</span><br><span class="line">        def inner_wrapper(*args, **kwargs):</span><br><span class="line">            print &quot;[&#123;level&#125;]: enter function &#123;func&#125;()&quot;.format(</span><br><span class="line">                level&#x3D;level,</span><br><span class="line">                func&#x3D;func.__name__)</span><br><span class="line">            return func(*args, **kwargs)</span><br><span class="line">        return inner_wrapper</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@logging(level&#x3D;&#39;INFO&#39;)</span><br><span class="line">def say(something):</span><br><span class="line">    print &quot;say &#123;&#125;!&quot;.format(something)</span><br><span class="line"></span><br><span class="line"># 如果没有使用@语法，等同于</span><br><span class="line"># say &#x3D; logging(level&#x3D;&#39;INFO&#39;)(say)</span><br><span class="line"></span><br><span class="line">@logging(level&#x3D;&#39;DEBUG&#39;)</span><br><span class="line">def do(something):</span><br><span class="line">    print &quot;do &#123;&#125;...&quot;.format(something)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    say(&#39;hello&#39;)</span><br><span class="line">    do(&quot;my work&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>python的变量寻找是依次向上找命名空间的，这个特性也支持了我们装饰器可以嵌套的来写。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/01/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Diaohaha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoda's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-01-28 17:32:33" itemprop="dateCreated datePublished" datetime="2021-01-28T17:32:33+08:00">2021-01-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/01/04/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E4%B9%8B%E6%BC%94%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -337,6 +640,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2020/12/21/test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Diaohaha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoda's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/21/test/" class="post-title-link" itemprop="url">成像原理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-12-21 14:02:17" itemprop="dateCreated datePublished" datetime="2020-12-21T14:02:17+08:00">2020-12-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-24 20:13:04" itemprop="dateModified" datetime="2020-12-24T20:13:04+08:00">2020-12-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%9A%E5%AA%92%E4%BD%93/" itemprop="url" rel="index"><span itemprop="name">多媒体</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="感光原件"><a href="#感光原件" class="headerlink" title="感光原件"></a>感光原件</h3><p>电荷藕合器件图像传感器 CCD (Charge Coupled Device)，它使用一种高感光度的半导体材料制成，能把光线转变成电荷，通过模数转换器芯片转换成数字信号，数字信号经过压缩以后由相机内部的闪速存储器或内置硬盘卡保存，因而可以轻而易举地把数据传输给计算机，并借助于计算机的处理手段，根据需要和想像来修改图像。CCD由许多感光单位组成，通常以百万像素为单位。当CCD表面受到光线照射时，每个感光单位会将电荷反映在组件上，所有的感光单位所产生的信号加在一起，就构成了一幅完整的画面。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2020/12/21/%E7%BB%86%E8%AF%B4%E5%88%86%E8%BE%A8%E7%8E%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -406,80 +783,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2020/12/21/test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Diaohaha">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Gaoda's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/21/test/" class="post-title-link" itemprop="url">成像原理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-12-21 14:02:17" itemprop="dateCreated datePublished" datetime="2020-12-21T14:02:17+08:00">2020-12-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-24 20:13:04" itemprop="dateModified" datetime="2020-12-24T20:13:04+08:00">2020-12-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%9A%E5%AA%92%E4%BD%93/" itemprop="url" rel="index"><span itemprop="name">多媒体</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="感光原件"><a href="#感光原件" class="headerlink" title="感光原件"></a>感光原件</h3><p>电荷藕合器件图像传感器 CCD (Charge Coupled Device)，它使用一种高感光度的半导体材料制成，能把光线转变成电荷，通过模数转换器芯片转换成数字信号，数字信号经过压缩以后由相机内部的闪速存储器或内置硬盘卡保存，因而可以轻而易举地把数据传输给计算机，并借助于计算机的处理手段，根据需要和想像来修改图像。CCD由许多感光单位组成，通常以百万像素为单位。当CCD表面受到光线照射时，每个感光单位会将电荷反映在组件上，所有的感光单位所产生的信号加在一起，就构成了一幅完整的画面。</p>
-
       
     </div>
 
@@ -662,20 +965,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

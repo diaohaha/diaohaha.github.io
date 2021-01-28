@@ -20,24 +20,21 @@
     var CONFIG = {"hostname":"diahhaha.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="分辨率  分辨率（英语：Image resolution）泛指量测或显示系统对细节的分辨能力。此概念可以用时间、空间等领域的量测。日常用语中之分辨率多用于影像的清晰度。  图像分辨率：是指图像实际像素点数，分辨率决定了图像细节的精细程度，分辨率越高，所包含的像素就越多，图像就越清晰。 显示分辨率：是指屏幕图像的精密度，是指显示器所能显示的像素有多少。显示分辨率与图像分辨率完全匹配，才能还原清晰优质">
+  <meta name="description" content="字符编码问题很简单，当你可以区分以下几种概念之后：  字节编码与字符编码 字节串与字符串 文件编码、IDE编码、其他I&#x2F;O编码 str()与repr()   字节编码与字符编码ascii unicode是字符编码，编码后的字符编成一个段落是字节编码，utf-8 gbk是字节编码。 字节串与字符串 str是字节串，由unicode经过编码(encode)后的字节组成的。使用len来求长度获取的是字节">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分辨率与宽高比">
-<meta property="og:url" content="http://diahhaha.github.io/2020/12/21/%E7%BB%86%E8%AF%B4%E5%88%86%E8%BE%A8%E7%8E%87/index.html">
+<meta property="og:title" content="Python-字符编码问题">
+<meta property="og:url" content="http://diahhaha.github.io/2021/01/28/Python-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Gaoda&#39;s Blog">
-<meta property="og:description" content="分辨率  分辨率（英语：Image resolution）泛指量测或显示系统对细节的分辨能力。此概念可以用时间、空间等领域的量测。日常用语中之分辨率多用于影像的清晰度。  图像分辨率：是指图像实际像素点数，分辨率决定了图像细节的精细程度，分辨率越高，所包含的像素就越多，图像就越清晰。 显示分辨率：是指屏幕图像的精密度，是指显示器所能显示的像素有多少。显示分辨率与图像分辨率完全匹配，才能还原清晰优质">
+<meta property="og:description" content="字符编码问题很简单，当你可以区分以下几种概念之后：  字节编码与字符编码 字节串与字符串 文件编码、IDE编码、其他I&#x2F;O编码 str()与repr()   字节编码与字符编码ascii unicode是字符编码，编码后的字符编成一个段落是字节编码，utf-8 gbk是字节编码。 字节串与字符串 str是字节串，由unicode经过编码(encode)后的字节组成的。使用len来求长度获取的是字节">
 <meta property="og:locale">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-112cd248bb292d6a637e21c2809614be_1440w.jpg">
-<meta property="og:image" content="https://diaohaha-file.oss-cn-hangzhou.aliyuncs.com/pic/900px-Video_Standards.svg.png">
-<meta property="article:published_time" content="2020-12-21T06:02:17.000Z">
-<meta property="article:modified_time" content="2021-01-06T13:26:30.270Z">
+<meta property="article:published_time" content="2021-01-28T09:37:45.000Z">
+<meta property="article:modified_time" content="2021-01-28T09:39:07.898Z">
 <meta property="article:author" content="Diaohaha">
-<meta property="article:tag" content="分辨率">
-<meta property="article:tag" content="DAR">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="字符编码">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pic3.zhimg.com/80/v2-112cd248bb292d6a637e21c2809614be_1440w.jpg">
 
-<link rel="canonical" href="http://diahhaha.github.io/2020/12/21/%E7%BB%86%E8%AF%B4%E5%88%86%E8%BE%A8%E7%8E%87/">
+<link rel="canonical" href="http://diahhaha.github.io/2021/01/28/Python-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/">
 
 
 <script id="page-configurations">
@@ -50,7 +47,7 @@
   };
 </script>
 
-  <title>分辨率与宽高比 | Gaoda's Blog</title>
+  <title>Python-字符编码问题 | Gaoda's Blog</title>
   
 
 
@@ -170,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2020/12/21/%E7%BB%86%E8%AF%B4%E5%88%86%E8%BE%A8%E7%8E%87/">
+    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/01/28/Python-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -183,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          分辨率与宽高比
+          Python-字符编码问题
         </h1>
 
         <div class="post-meta">
@@ -192,23 +189,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-12-21 14:02:17" itemprop="dateCreated datePublished" datetime="2020-12-21T14:02:17+08:00">2020-12-21</time>
+              <time title="Created: 2021-01-28 17:37:45 / Modified: 17:39:07" itemprop="dateCreated datePublished" datetime="2021-01-28T17:37:45+08:00">2021-01-28</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-06 21:26:30" itemprop="dateModified" datetime="2021-01-06T21:26:30+08:00">2021-01-06</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%9A%E5%AA%92%E4%BD%93/" itemprop="url" rel="index"><span itemprop="name">多媒体</span></a>
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
                 </span>
             </span>
 
@@ -223,39 +214,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h2><hr>
-<blockquote>
-<p>分辨率（英语：Image resolution）泛指量测或显示系统对细节的分辨能力。此概念可以用时间、空间等领域的量测。日常用语中之分辨率多用于影像的清晰度。</p>
-</blockquote>
-<p><strong>图像分辨率</strong>：是指图像实际像素点数，分辨率决定了图像细节的精细程度，分辨率越高，所包含的像素就越多，图像就越清晰。</p>
-<p><strong>显示分辨率</strong>：是指屏幕图像的精密度，是指显示器所能显示的像素有多少。显示分辨率与图像分辨率完全匹配，才能还原清晰优质的画面。</p>
-<p>所以分辨率的正确的表达方式应该是（ width x height ）来表示的视频或者显示器可以描述的细节(像素)数量。但是我们通常口口相传都是用480p，720p，1080p，4k，8k来说分辨率。这里边字母p表示逐行扫描（progressive scan），k就是千（ kilo ）。所以说480p描述的是行，4k描述的是列。之所以可以只用宽高里的一项来表示分辨率，是因为有比较固定的宽高比。</p>
-<a id="more"></a>
-
-
-<h2 id="宽高比"><a href="#宽高比" class="headerlink" title="宽高比"></a>宽高比</h2><hr>
-<p>在电影工业中，<font color=red>习惯将影像比例的高度缩小为1</font>，如此一来，像一个 2.40:1 的横向影像只需要描述为“240”。从19世纪一直到20世纪50年代所有电影的画面比例都是标准的1.33:1，也就是我们常说4:3的比例。也是在20世纪50年代，电视机诞生了，刚刚诞生的电视行业面临着采用何种屏幕比例作为电视标准的问题。为了方便把电影内容搬上电视屏幕上，美国国家电视标准委员会（NTSC）最后决定采用4：3作为电视的标准比例。由于电视机逐渐的普及，人们慢慢习惯在电视上观看节目，这样导致电影商与电视商的利益产生摩擦，电影公司不得不使用新图像的格式标准，于是1950年代好莱坞电影进入了宽屏幕（1.85:1）时代，标榜更高的视觉享受，以挽回从电影院流向电视的观众。到了20世纪70年代，诞生了(2.35:1)比例的标准宽荧幕，于是“宽银幕电影”出现了，而且一直沿用至今。</p>
-<p><strong>1.85:1是当前影视行业最常用的宽高比。</strong></p>
-<p>从人体学角度看，人眼的视野宽度为160度，视野高度为90度，那人眼视野长宽比是160:90，也就是我们常说的16:9。由于人眼视野最佳比例为16:9。因此这个比例得到人们的认可并得到了发展。现在大部分数字影像的宽高比都以16:9（1.77:1）为主。</p>
-<p><img src="https://pic3.zhimg.com/80/v2-112cd248bb292d6a637e21c2809614be_1440w.jpg" alt="人眼视野图"></p>
-<p>以前通常影像的宽高比和显示器的宽高比是一致的，但是在有更多智能应用的时代，显示器的用途不只是用来播放影像，所以显示器和影像的宽高比有了却别，比如ipad一直坚持4:3,显示器出现了3.2:1的带鱼屏，而手机为了手感出现了18:9。</p>
-<p><img src="https://diaohaha-file.oss-cn-hangzhou.aliyuncs.com/pic/900px-Video_Standards.svg.png" alt="影像宽高比"></p>
-<blockquote>
-<p><strong>4k</strong>最早的说法来源于数字电影的分辨率，是指4096x2160(1.89:1)的数字电影分辨率，因为横向有4096个像素，所以就称之为4k分辨率；同时相应的2048x1080的数字电影分辨率就称之为2K分辨率；</p>
-</blockquote>
-<blockquote>
-<p>但实际上我们的电视或者显示器是标准的16：9的显示比例，所以在标准的16：9的屏幕上是不会出现以上的分辨率，而对应出现的3840x2160以及1920x1080就成为我们普遍意义上所称的4K和2K（其实是3.8k、1.9k）</p>
-</blockquote>
-<h4 id="主流的分辨率-16-9"><a href="#主流的分辨率-16-9" class="headerlink" title="主流的分辨率 (16:9)"></a>主流的分辨率 (16:9)</h4><hr>
-<ul>
-<li>2160p：3840x2160</li>
-<li>1440p：2560x1440</li>
-<li>1080p：1920x1080</li>
-<li>720p：1280x720</li>
-<li>480p：854x480</li>
-<li>360p：640x360</li>
-<li>240p：426x240</li>
+        <p>字符编码问题很简单，当你可以区分以下几种概念之后：</p>
+<ol>
+<li>字节编码与字符编码</li>
+<li>字节串与字符串</li>
+<li>文件编码、IDE编码、其他I/O编码</li>
+<li><strong>str</strong>()与<strong>repr</strong>()</li>
+</ol>
+<hr>
+<h4 id="字节编码与字符编码"><a href="#字节编码与字符编码" class="headerlink" title="字节编码与字符编码"></a>字节编码与字符编码</h4><p>ascii unicode是字符编码，编码后的字符编成一个段落是字节编码，utf-8 gbk是字节编码。</p>
+<h4 id="字节串与字符串"><a href="#字节串与字符串" class="headerlink" title="字节串与字符串"></a>字节串与字符串</h4><ul>
+<li><p>str是字节串，由unicode经过编码(encode)后的字节组成的。使用len来求长度获取的是字节长度。</p>
+</li>
+<li><p>unicode才是严格意义上的字符串，如u’中文’。使用len来求长度时是字符个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; len(&quot;中文&quot;)</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt; len(u&quot;中文&quot;)</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>在程序中处理字符串之前，最好先确定是哪种类型。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(u<span class="string">&#x27;中文&#x27;</span>, unicode)</span></span><br><span class="line">True</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(u<span class="string">&#x27;中文&#x27;</span>, str)</span></span><br><span class="line">False</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(<span class="string">&#x27;中文&#x27;</span>, str)</span></span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>通常的处理过程是识别输入编码，然后解码成unicode，在最后输出之前在进行编码，分别使用python内建函数encode和decode，如果确定一个字符串不是unicode类型，这时候需要进行解码，可以使用chardet识别str的编码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from chardet import detect</span><br><span class="line">&gt;&gt;&gt; a &#x3D; &quot;中文&quot;</span><br><span class="line">&gt;&gt;&gt; detect(a)</span><br><span class="line">&#123;&#39;confidence&#39;: 0.682639754276994, &#39;encoding&#39;: &#39;KOI8-R&#39;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="文件编码、IDE编码、其他I-O编码"><a href="#文件编码、IDE编码、其他I-O编码" class="headerlink" title="文件编码、IDE编码、其他I/O编码"></a>文件编码、IDE编码、其他I/O编码</h4></li>
+<li><p>Python程序文件的编码 (默认编码ascii 只在文件中有编码时有影响)</p>
+</li>
+<li><p>Python程序运行时环境（IDE）的编码（影响输入和输出）</p>
+</li>
+<li><p>Python程序读取外部文件、网页的编码 （影响输入与输出）</p>
+</li>
 </ul>
+<p>当我们发现乱码时，就要区分是第二还是第三种情形，终端打印是IDE相关，数据库属于其他I/O相关，之所以出现乱码就是编码不匹配，我们需要确定的是不匹配的双方和双方所对应的编码。</p>
+<p>对于系统的编码可以使用sys来获取，这影响终端显示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import sys</span><br><span class="line">&gt;&gt;&gt; sys.getdefaultencoding()</span><br><span class="line">&#39;ascii&#39;</span><br></pre></td></tr></table></figure>
+<h4 id="str-与repr"><a href="#str-与repr" class="headerlink" title="str()与repr()"></a><strong>str</strong>()与<strong>repr</strong>()</h4><p>__repr__和__str__这两个方法都是用于显示的，__str__是面向用户的，而__repr__面向程序员。print首先尝试的是__str__函数，这就是我们unicode字符串打印出来和字节串一样的原因。</p>
 
     </div>
 
@@ -265,8 +253,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%88%86%E8%BE%A8%E7%8E%87/" rel="tag"># 分辨率</a>
-              <a href="/tags/DAR/" rel="tag"># DAR</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" rel="tag"># 字符编码</a>
           </div>
 
         
@@ -275,12 +263,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/08/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E4%B9%8B%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B8%8E%E9%AB%98%E5%B9%B6%E5%8F%91/" rel="prev" title="系统架构之高可用与高并发">
-      <i class="fa fa-chevron-left"></i> 系统架构之高可用与高并发
+    <a href="/2021/01/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-Python%E8%A3%85%E9%A5%B0%E5%99%A8/" rel="prev" title="设计模式:Python装饰器">
+      <i class="fa fa-chevron-left"></i> 设计模式:Python装饰器
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/12/21/test/" rel="next" title="成像原理">
-      成像原理 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/01/28/Python-with.as%E8%AF%AD%E5%8F%A5/" rel="next" title="as语句">
+      as语句 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -341,7 +329,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E8%BE%A8%E7%8E%87"><span class="nav-number">1.</span> <span class="nav-text">分辨率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%BD%E9%AB%98%E6%AF%94"><span class="nav-number">2.</span> <span class="nav-text">宽高比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E7%9A%84%E5%88%86%E8%BE%A8%E7%8E%87-16-9"><span class="nav-number">2.0.1.</span> <span class="nav-text">主流的分辨率 (16:9)</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E7%BC%96%E7%A0%81%E4%B8%8E%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">字节编码与字符编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E4%B8%B2%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.</span> <span class="nav-text">字节串与字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E3%80%81IDE%E7%BC%96%E7%A0%81%E3%80%81%E5%85%B6%E4%BB%96I-O%E7%BC%96%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">文件编码、IDE编码、其他I&#x2F;O编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#str-%E4%B8%8Erepr"><span class="nav-number">4.</span> <span class="nav-text">str()与repr()</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -466,7 +454,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'blog-comments',
       owner       : 'diaohaha',
       admin       : ['diaohaha'],
-      id          : '5b362f01b003c6667e2e723551c9d7a7',
+      id          : '926c718e356bd723cdf54bb9be987736',
         language: 'zh-CN',
       distractionFreeMode: true
     });
