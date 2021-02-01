@@ -160,6 +160,79 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/02/01/%E5%89%8D%E7%AB%AF%E6%9C%AF%E8%AF%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Diaohaha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoda's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/01/%E5%89%8D%E7%AB%AF%E6%9C%AF%E8%AF%AD/" class="post-title-link" itemprop="url">前端术语</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-01 14:19:00 / Modified: 14:21:39" itemprop="dateCreated datePublished" datetime="2021-02-01T14:19:00+08:00">2021-02-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%AF%E8%AF%AD/" itemprop="url" rel="index"><span itemprop="name">术语</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="webSocket"><a href="#webSocket" class="headerlink" title="webSocket"></a>webSocket</h2><blockquote>
+<p>WebSocket是一种与HTTP不同的协议。两者都位于OSI模型的应用层，并且都依赖于传输层的TCP协议。 虽然它们不同，但是RFC 6455中规定：it is designed to work over HTTP ports 80 and 443 as well as to support HTTP proxies and intermediaries（WebSocket通过HTTP端口80和443进行工作，并支持HTTP代理和中介），从而使其与HTTP协议兼容。 为了实现兼容性，WebSocket握手使用HTTP Upgrade头[1]从HTTP协议更改为WebSocket协议。</p>
+</blockquote>
+<blockquote>
+<p>WebSocket协议支持Web浏览器（或其他客户端应用程序）与Web服务器之间的交互，具有较低的开销，便于实现客户端与服务器的实时数据传输。 服务器可以通过标准化的方式来实现，而无需客户端首先请求内容，并允许消息在保持连接打开的同时来回传递。通过这种方式，可以在客户端和服务器之间进行双向持续对话。 通信通过TCP端口80或443完成，这在防火墙阻止非Web网络连接的环境下是有益的。另外，Comet之类的技术以非标准化的方式实现了类似的双向通信。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/01/28/Python-with.as%E8%AF%AD%E5%8F%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -429,10 +502,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-01-28 17:32:33 / Modified: 17:50:40" itemprop="dateCreated datePublished" datetime="2021-01-28T17:32:33+08:00">2021-01-28</time>
+              <time title="Created: 2021-01-28 17:32:33" itemprop="dateCreated datePublished" datetime="2021-01-28T17:32:33+08:00">2021-01-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-01-29 15:56:50" itemprop="dateModified" datetime="2021-01-29T15:56:50+08:00">2021-01-29</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -454,8 +533,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Builder-建造者模式"><a href="#Builder-建造者模式" class="headerlink" title="Builder 建造者模式"></a>Builder 建造者模式</h1><blockquote>
-<p>链式的实例初始化</p>
+          <h1 id="Builder-建造者模式"><a href="#Builder-建造者模式" class="headerlink" title="Builder 建造者模式"></a>Builder 建造者模式</h1><p>Builder 模式是一步一步创建一个复杂对象的创建型模式，它允许用户在不知道内部构建细节的情况下，可以更精细的控制对象的构造流程，该模式是为了将构建复杂对象的过程和它的部件解耦，使得构建过程和创建过程隔离开来。</p>
+<blockquote>
+<p>实现链式的实例初始化</p>
 </blockquote>
 
       
@@ -978,20 +1058,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
