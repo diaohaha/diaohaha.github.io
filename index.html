@@ -160,6 +160,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/07/12/Golang%E9%99%90%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Diaohaha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoda's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/12/Golang%E9%99%90%E6%B5%81/" class="post-title-link" itemprop="url">Golang提供得限流包</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-12 16:32:41 / Modified: 16:55:32" itemprop="dateCreated datePublished" datetime="2021-07-12T16:32:41+08:00">2021-07-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">系统架构</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="服务限流"><a href="#服务限流" class="headerlink" title="服务限流"></a>服务限流</h2><p>服务限流指的是设置服务能支持得最大并发访问量，超过阈值则拒绝；限流阈值得设置通常分两种类型一种是Qps，一种是Concurrency。限流通常使用令牌桶来实现。</p>
+<p>令牌桶算法是网络流量整形（Traffic Shaping）和速率限制（Rate Limiting）中最常使用的一种算法。大小固定的令牌桶可自行以恒定的速率源源不断地产生令牌。当有新的请求的到来时需要先申请令牌桶取一定数量的令牌。取不到时返回错误，以此来实现限流。</p>
+<h2 id="Golang中的限流包time-rate"><a href="#Golang中的限流包time-rate" class="headerlink" title="Golang中的限流包time/rate"></a>Golang中的限流包time/rate</h2><h3 id="构造一个限流器"><a href="#构造一个限流器" class="headerlink" title="构造一个限流器"></a>构造一个限流器</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">limiter := NewLimiter(<span class="number">10</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.第一个参数是 r Limit。代表每秒可以向 Token 桶中产生多少 token。Limit 实际上是 float64 的别名。</span><br><span class="line">2.第二个参数是 b int。b 代表 Token 桶的容量大小。</span><br></pre></td></tr></table></figure>
+
+<p>用r来限制qps，用b来限制concurrentcy。</p>
+<h3 id="Allow-AllowN"><a href="#Allow-AllowN" class="headerlink" title="Allow/AllowN"></a>Allow/AllowN</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(lim *Limiter)</span> <span class="title">Allow</span><span class="params">()</span> <span class="title">bool</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(lim *Limiter)</span> <span class="title">AllowN</span><span class="params">(now time.Time, n <span class="keyword">int</span>)</span> <span class="title">bool</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/07/09/%E4%BC%98%E9%9B%85%E9%80%80%E5%87%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -357,10 +436,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-06-23 11:55:54 / Modified: 13:36:55" itemprop="dateCreated datePublished" datetime="2021-06-23T11:55:54+08:00">2021-06-23</time>
+              <time title="Created: 2021-06-23 11:55:54" itemprop="dateCreated datePublished" datetime="2021-06-23T11:55:54+08:00">2021-06-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-12 16:33:03" itemprop="dateModified" datetime="2021-07-12T16:33:03+08:00">2021-07-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -388,7 +473,7 @@
 <p><code>[Frame头][IP头][TCP头][应用层DATA][Frame尾]</code></p>
 <p>1500MTU的限制，抛去每一层的头部控制信息，留给data层的大小大概有1450左右字节大小，按照汉字3个字节，大概一个报文中可以传输一篇岳阳楼记（300字左右）。当应用层的数据过大时，就需要进行报文的分片与重组，这个过程由ip层来完成，ip的重组还是蛮耗时的，所以我们应用层设计中数据应该尽量控制一个数据包就可以传输。</p>
 <p>我们之前的网络协议的设计中，由物理层，链路层，网络层，传输层来负责数据在网络中的传输，而应用层只需要直接将它的数据send&amp;recv到socket即可，那为什么在HTTP2.0中却又在应用层设计出了帧呢? 因为我们目前的网络设计的并不好。网络如果可以重新设计，一定不会是这个样子，但是作为已经广泛使用的基础设施，已经没有了机会，所以只能在应用层来做手脚。</p>
-<h4 id="数据传输并发问题"><a href="#数据传输并发问题" class="headerlink" title="数据传输并发问题"></a>数据传输并发问题</h4>
+
       
     </div>
 
@@ -932,103 +1017,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2021/01/28/Python-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Diaohaha">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Gaoda's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/28/Python-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Python-字符编码问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-01-28 17:37:45 / Modified: 17:39:07" itemprop="dateCreated datePublished" datetime="2021-01-28T17:37:45+08:00">2021-01-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>字符编码问题很简单，当你可以区分以下几种概念之后：</p>
-<ol>
-<li>字节编码与字符编码</li>
-<li>字节串与字符串</li>
-<li>文件编码、IDE编码、其他I/O编码</li>
-<li><strong>str</strong>()与<strong>repr</strong>()</li>
-</ol>
-<hr>
-<h4 id="字节编码与字符编码"><a href="#字节编码与字符编码" class="headerlink" title="字节编码与字符编码"></a>字节编码与字符编码</h4><p>ascii unicode是字符编码，编码后的字符编成一个段落是字节编码，utf-8 gbk是字节编码。</p>
-<h4 id="字节串与字符串"><a href="#字节串与字符串" class="headerlink" title="字节串与字符串"></a>字节串与字符串</h4><ul>
-<li><p>str是字节串，由unicode经过编码(encode)后的字节组成的。使用len来求长度获取的是字节长度。</p>
-</li>
-<li><p>unicode才是严格意义上的字符串，如u’中文’。使用len来求长度时是字符个数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; len(&quot;中文&quot;)</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt; len(u&quot;中文&quot;)</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
-<p>在程序中处理字符串之前，最好先确定是哪种类型。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(u<span class="string">&#x27;中文&#x27;</span>, unicode)</span></span><br><span class="line">True</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(u<span class="string">&#x27;中文&#x27;</span>, str)</span></span><br><span class="line">False</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; isinstance(<span class="string">&#x27;中文&#x27;</span>, str)</span></span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-<p>通常的处理过程是识别输入编码，然后解码成unicode，在最后输出之前在进行编码，分别使用python内建函数encode和decode，如果确定一个字符串不是unicode类型，这时候需要进行解码，可以使用chardet识别str的编码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from chardet import detect</span><br><span class="line">&gt;&gt;&gt; a &#x3D; &quot;中文&quot;</span><br><span class="line">&gt;&gt;&gt; detect(a)</span><br><span class="line">&#123;&#39;confidence&#39;: 0.682639754276994, &#39;encoding&#39;: &#39;KOI8-R&#39;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="文件编码、IDE编码、其他I-O编码"><a href="#文件编码、IDE编码、其他I-O编码" class="headerlink" title="文件编码、IDE编码、其他I/O编码"></a>文件编码、IDE编码、其他I/O编码</h4></li>
-<li><p>Python程序文件的编码 (默认编码ascii 只在文件中有编码时有影响)</p>
-</li>
-<li><p>Python程序运行时环境（IDE）的编码（影响输入和输出）</p>
-</li>
-<li><p>Python程序读取外部文件、网页的编码 （影响输入与输出）</p>
-</li>
-</ul>
-<p>当我们发现乱码时，就要区分是第二还是第三种情形，终端打印是IDE相关，数据库属于其他I/O相关，之所以出现乱码就是编码不匹配，我们需要确定的是不匹配的双方和双方所对应的编码。</p>
-<p>对于系统的编码可以使用sys来获取，这影响终端显示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import sys</span><br><span class="line">&gt;&gt;&gt; sys.getdefaultencoding()</span><br><span class="line">&#39;ascii&#39;</span><br></pre></td></tr></table></figure>
-<h4 id="str-与repr"><a href="#str-与repr" class="headerlink" title="str()与repr()"></a><strong>str</strong>()与<strong>repr</strong>()</h4><p>__repr__和__str__这两个方法都是用于显示的，__str__是面向用户的，而__repr__面向程序员。print首先尝试的是__str__函数，这就是我们unicode字符串打印出来和字节串一样的原因。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1098,7 +1086,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1111,7 +1099,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
