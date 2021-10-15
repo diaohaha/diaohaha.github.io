@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"diahhaha.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="分辨率  分辨率（英语：Image resolution）泛指量测或显示系统对细节的分辨能力。此概念可以用时间、空间等领域的量测。日常用语中之分辨率多用于影像的清晰度。  图像分辨率：是指图像实际像素点数，分辨率决定了图像细节的精细程度，分辨率越高，所包含的像素就越多，图像就越清晰。 显示分辨率：是指屏幕图像的精密度，是指显示器所能显示的像素有多少。显示分辨率与图像分辨率完全匹配，才能还原清晰优质">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分辨率与宽高比">
+<meta property="og:url" content="http://diahhaha.github.io/2020/12/21/%E7%BB%86%E8%AF%B4%E5%88%86%E8%BE%A8%E7%8E%87/index.html">
+<meta property="og:site_name" content="Gaoda&#39;s Blog">
+<meta property="og:description" content="分辨率  分辨率（英语：Image resolution）泛指量测或显示系统对细节的分辨能力。此概念可以用时间、空间等领域的量测。日常用语中之分辨率多用于影像的清晰度。  图像分辨率：是指图像实际像素点数，分辨率决定了图像细节的精细程度，分辨率越高，所包含的像素就越多，图像就越清晰。 显示分辨率：是指屏幕图像的精密度，是指显示器所能显示的像素有多少。显示分辨率与图像分辨率完全匹配，才能还原清晰优质">
+<meta property="og:locale">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-112cd248bb292d6a637e21c2809614be_1440w.jpg">
+<meta property="og:image" content="https://diaohaha-file.oss-cn-hangzhou.aliyuncs.com/pic/900px-Video_Standards.svg.png">
+<meta property="article:published_time" content="2020-12-21T06:02:17.000Z">
+<meta property="article:modified_time" content="2021-10-15T10:52:06.721Z">
+<meta property="article:author" content="Diaohaha">
+<meta property="article:tag" content="分辨率">
+<meta property="article:tag" content="DAR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/80/v2-112cd248bb292d6a637e21c2809614be_1440w.jpg">
+
+
+<link rel="canonical" href="http://diahhaha.github.io/2020/12/21/%E7%BB%86%E8%AF%B4%E5%88%86%E8%BE%A8%E7%8E%87/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://diahhaha.github.io/2020/12/21/%E7%BB%86%E8%AF%B4%E5%88%86%E8%BE%A8%E7%8E%87/","path":"2020/12/21/细说分辨率/","title":"分辨率与宽高比"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>分辨率与宽高比 | Gaoda's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Gaoda's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E8%BE%A8%E7%8E%87"><span class="nav-number">1.</span> <span class="nav-text">分辨率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%BD%E9%AB%98%E6%AF%94"><span class="nav-number">2.</span> <span class="nav-text">宽高比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E7%9A%84%E5%88%86%E8%BE%A8%E7%8E%87-16-9"><span class="nav-number">2.0.1.</span> <span class="nav-text">主流的分辨率 (16:9)</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Diaohaha</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://diahhaha.github.io/2020/12/21/%E7%BB%86%E8%AF%B4%E5%88%86%E8%BE%A8%E7%8E%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Diaohaha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoda's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          分辨率与宽高比
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-21 14:02:17" itemprop="dateCreated datePublished" datetime="2020-12-21T14:02:17+08:00">2020-12-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-10-15 18:52:06" itemprop="dateModified" datetime="2021-10-15T18:52:06+08:00">2021-10-15</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%9A%E5%AA%92%E4%BD%93/" itemprop="url" rel="index"><span itemprop="name">多媒体</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h2><hr>
+<blockquote>
+<p>分辨率（英语：Image resolution）泛指量测或显示系统对细节的分辨能力。此概念可以用时间、空间等领域的量测。日常用语中之分辨率多用于影像的清晰度。</p>
+</blockquote>
+<p><strong>图像分辨率</strong>：是指图像实际像素点数，分辨率决定了图像细节的精细程度，分辨率越高，所包含的像素就越多，图像就越清晰。</p>
+<p><strong>显示分辨率</strong>：是指屏幕图像的精密度，是指显示器所能显示的像素有多少。显示分辨率与图像分辨率完全匹配，才能还原清晰优质的画面。</p>
+<p>所以分辨率的正确的表达方式应该是（ width x height ）来表示的视频或者显示器可以描述的细节(像素)数量。但是我们通常口口相传都是用480p，720p，1080p，4k，8k来说分辨率。这里边字母p表示逐行扫描（progressive scan），k就是千（ kilo ）。所以说480p描述的是行，4k描述的是列。之所以可以只用宽高里的一项来表示分辨率，是因为有比较固定的宽高比。</p>
+<span id="more"></span>
+
+
+<h2 id="宽高比"><a href="#宽高比" class="headerlink" title="宽高比"></a>宽高比</h2><hr>
+<p>在电影工业中，<font color=red>习惯将影像比例的高度缩小为1</font>，如此一来，像一个 2.40:1 的横向影像只需要描述为“240”。从19世纪一直到20世纪50年代所有电影的画面比例都是标准的1.33:1，也就是我们常说4:3的比例。也是在20世纪50年代，电视机诞生了，刚刚诞生的电视行业面临着采用何种屏幕比例作为电视标准的问题。为了方便把电影内容搬上电视屏幕上，美国国家电视标准委员会（NTSC）最后决定采用4：3作为电视的标准比例。由于电视机逐渐的普及，人们慢慢习惯在电视上观看节目，这样导致电影商与电视商的利益产生摩擦，电影公司不得不使用新图像的格式标准，于是1950年代好莱坞电影进入了宽屏幕（1.85:1）时代，标榜更高的视觉享受，以挽回从电影院流向电视的观众。到了20世纪70年代，诞生了(2.35:1)比例的标准宽荧幕，于是“宽银幕电影”出现了，而且一直沿用至今。</p>
+<p><strong>1.85:1是当前影视行业最常用的宽高比。</strong></p>
+<p>从人体学角度看，人眼的视野宽度为160度，视野高度为90度，那人眼视野长宽比是160:90，也就是我们常说的16:9。由于人眼视野最佳比例为16:9。因此这个比例得到人们的认可并得到了发展。现在大部分数字影像的宽高比都以16:9（1.77:1）为主。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-112cd248bb292d6a637e21c2809614be_1440w.jpg" alt="人眼视野图"></p>
+<p>以前通常影像的宽高比和显示器的宽高比是一致的，但是在有更多智能应用的时代，显示器的用途不只是用来播放影像，所以显示器和影像的宽高比有了却别，比如ipad一直坚持4:3,显示器出现了3.2:1的带鱼屏，而手机为了手感出现了18:9。</p>
+<p><img src="https://diaohaha-file.oss-cn-hangzhou.aliyuncs.com/pic/900px-Video_Standards.svg.png" alt="影像宽高比"></p>
+<blockquote>
+<p><strong>4k</strong>最早的说法来源于数字电影的分辨率，是指4096x2160(1.89:1)的数字电影分辨率，因为横向有4096个像素，所以就称之为4k分辨率；同时相应的2048x1080的数字电影分辨率就称之为2K分辨率；</p>
+</blockquote>
+<blockquote>
+<p>但实际上我们的电视或者显示器是标准的16：9的显示比例，所以在标准的16：9的屏幕上是不会出现以上的分辨率，而对应出现的3840x2160以及1920x1080就成为我们普遍意义上所称的4K和2K（其实是3.8k、1.9k）</p>
+</blockquote>
+<h4 id="主流的分辨率-16-9"><a href="#主流的分辨率-16-9" class="headerlink" title="主流的分辨率 (16:9)"></a>主流的分辨率 (16:9)</h4><hr>
+<ul>
+<li>2160p：3840x2160</li>
+<li>1440p：2560x1440</li>
+<li>1080p：1920x1080</li>
+<li>720p：1280x720</li>
+<li>480p：854x480</li>
+<li>360p：640x360</li>
+<li>240p：426x240</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%88%86%E8%BE%A8%E7%8E%87/" rel="tag"># 分辨率</a>
+              <a href="/tags/DAR/" rel="tag"># DAR</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/08/07/docker-vs-vm/" rel="prev" title="Docker与虚拟机">
+                  <i class="fa fa-chevron-left"></i> Docker与虚拟机
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/01/05/k8s-introduce/" rel="next" title="Kubernetes简介">
+                  Kubernetes简介 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Diaohaha</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
